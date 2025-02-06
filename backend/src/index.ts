@@ -14,44 +14,7 @@ const app = new Hono<{
 	}
 }>();
 
-// app.use(
-// 	"*",
-// 	cors({
-// 	  origin: "https://medium-clone-psi-two.vercel.app", 
-// 	  allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-// 	  allowHeaders: ["Content-Type", "Authorization"],
-// 	  credentials: true, 
-// 	})
-//   );
-
-// app.use('*', async (ctx, next) => {
-// 	// Handle preflight OPTIONS request
-// 	if (ctx.req.method === 'OPTIONS') {
-// 	  ctx.header('Access-Control-Allow-Origin', 'https://medium-clone-psi-two.vercel.app');
-// 	  ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-// 	  ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-// 	  ctx.header('Access-Control-Allow-Credentials', 'true');
-// 	  // Return a response with 204 status and no content
-// 	  return new Response(null, { 
-// 		status: 204, 
-// 		headers: { 
-// 		  'Access-Control-Allow-Origin': 'https://medium-clone-psi-two.vercel.app',
-// 		  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-// 		  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-// 		  'Access-Control-Allow-Credentials': 'true'
-// 		}
-// 	  });
-// 	}
-  
-// 	// Handle regular requests (POST, GET, etc.)
-// 	ctx.header('Access-Control-Allow-Origin', 'https://medium-clone-psi-two.vercel.app');
-// 	ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-// 	ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-// 	ctx.header('Access-Control-Allow-Credentials', 'true');
-  
-// 	// Proceed to the next middleware or route handler
-// 	return next();
-//   });
+app.use('/*', cors());
 
 
 
