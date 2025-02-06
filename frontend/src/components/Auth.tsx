@@ -51,7 +51,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                             username: e.target.value
                         })
                     }} />
-                    <LabelledInput label="Password" type={"password"} placeholder="123456" onChange={(e) => {
+                    <LabelledInput label="Password" type={"password"} placeholder="password" onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             password: e.target.value
