@@ -24,17 +24,26 @@ const app = new Hono<{
 // 	})
 //   );
 
-app.use('*', (ctx, next) => {
-	// Manually add the Access-Control-Allow-Origin header for preflight requests
+app.use('*', async (ctx, next) => {
+	// Handle preflight OPTIONS request
+	if (ctx.req.method === 'OPTIONS') {
+	  ctx.header('Access-Control-Allow-Origin', 'https://medium-clone-psi-two.vercel.app');
+	  ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+	  ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	  ctx.header('Access-Control-Allow-Credentials', 'true');
+	  return new Response(null, { status: 204 }); // Return 204 with no content
+	}
+  
+	// Add CORS headers for actual requests (POST, GET, etc.)
 	ctx.header('Access-Control-Allow-Origin', 'https://medium-clone-psi-two.vercel.app');
 	ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 	ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 	ctx.header('Access-Control-Allow-Credentials', 'true');
 	
-	
-  
+	// Proceed with the actual request
 	return next();
   });
+  
 
 
 
