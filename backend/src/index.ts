@@ -31,19 +31,27 @@ app.use('*', async (ctx, next) => {
 	  ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 	  ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 	  ctx.header('Access-Control-Allow-Credentials', 'true');
-	  return new Response(null, { status: 204 }); // Return 204 with no content
+	  // Return a response with 204 status and no content
+	  return new Response(null, { 
+		status: 204, 
+		headers: { 
+		  'Access-Control-Allow-Origin': 'https://medium-clone-psi-two.vercel.app',
+		  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+		  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+		  'Access-Control-Allow-Credentials': 'true'
+		}
+	  });
 	}
   
-	// Add CORS headers for actual requests (POST, GET, etc.)
+	// Handle regular requests (POST, GET, etc.)
 	ctx.header('Access-Control-Allow-Origin', 'https://medium-clone-psi-two.vercel.app');
 	ctx.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 	ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 	ctx.header('Access-Control-Allow-Credentials', 'true');
-	
-	// Proceed with the actual request
+  
+	// Proceed to the next middleware or route handler
 	return next();
   });
-  
 
 
 
