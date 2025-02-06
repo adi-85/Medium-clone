@@ -14,7 +14,13 @@ const app = new Hono<{
 	}
 }>();
 
-app.use('/*', cors());
+app.use('/*', cors({
+	origin: 'https://medium-clone-psi-two.vercel.app',
+	allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowHeaders: ['Content-Type', 'Authorization'],
+	credentials: true, 
+  }
+));
 
 
 
