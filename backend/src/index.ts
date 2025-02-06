@@ -17,7 +17,7 @@ const app = new Hono<{
 app.use(
 	"*",
 	cors({
-	  origin: "https://vercel.com/aditya85thakur-gmailcoms-projects/medium-clone/982CedrXzrLTjAsJV3U5XkpyoTej", 
+	  origin: "https://medium-clone-psi-two.vercel.app", 
 	  allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 	  allowHeaders: ["Content-Type", "Authorization"],
 	  credentials: true, 
